@@ -29,7 +29,7 @@ public class PlayerScript : MonoBehaviour
             IsOn1 = true;
             IsOn2 = false;
             IsOn3 = false;
-            Moved = true;
+            
         }
         else if(IsOn2 == true && Keyboard.current.sKey.wasPressedThisFrame)
         {
@@ -43,12 +43,12 @@ public class PlayerScript : MonoBehaviour
             IsOn1 = false;
             IsOn2 = true;
         }
-        else if(IsOn1 == true && Keyboard.current.wKey.wasPressedThisFrame)
+        if (IsOn3 == true && Keyboard.current.wKey.wasPressedThisFrame)
         {
-            PlayerPos.transform.position = new Vector2(PosX, -3.48f);
-            IsOn1 = false;
-            IsOn3 = true;
+            PlayerPos.transform.position = new Vector2(PosX, -0.4f);
+            IsOn3 = false;
+            IsOn2 = true;
         }
-        
+         
     }
 }
