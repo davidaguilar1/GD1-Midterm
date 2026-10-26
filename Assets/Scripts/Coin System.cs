@@ -30,10 +30,7 @@ public class CoinSystem : MonoBehaviour
             Instantiate(Coins, TopspawnPos, transform.rotation);
             TopSpawn = true;
         }
-       if(TopSpawn == true)
-        {
-            
-        }
+     
     }
    
     private void OnTriggerEnter2D(Collider2D collision)
