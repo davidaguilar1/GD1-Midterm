@@ -5,8 +5,10 @@ using UnityEngine.Tilemaps;
 public class TopplatformGen : MonoBehaviour
 {
     public GameObject topPlat;
+    public SpriteRenderer TopPlat;
     public GameObject MidPlat;
     public GameObject BotPlat;
+    public CoinSystem HealthSwitch;
     private GameObject ToplastSpawnPlatform;
     private GameObject MidlastSpawnPlatform;
     private GameObject BotLastSpawnPlatform;
@@ -18,6 +20,7 @@ public class TopplatformGen : MonoBehaviour
         ToplastSpawnPlatform = GameObject.FindWithTag("TopPlatform");
         MidlastSpawnPlatform = GameObject.FindWithTag("MidPlatform");
         BotLastSpawnPlatform = GameObject.FindWithTag("BotPlatform");
+        HealthSwitch = FindFirstObjectByType<CoinSystem>();
     }
 
     // Update is called once per frame
@@ -46,6 +49,10 @@ public class TopplatformGen : MonoBehaviour
             Vector3 BotspawnPos = new Vector3(18f, -4.6f, transform.position.z);
 
             BotLastSpawnPlatform = Instantiate(BotPlat, BotspawnPos, transform.rotation);
+        }
+        if(HealthSwitch.Points <= 90)
+        {
+            TopPlat.color = Color.red;
         }
     }
 }

@@ -1,9 +1,11 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEngine.UI;
 public class CoinSystem : MonoBehaviour
 {
     public GameObject Coins;
+    public Slider BossHealth;
     public int Points;
     public TMP_Text PointCounter;
     public float timer;
@@ -13,16 +15,17 @@ public class CoinSystem : MonoBehaviour
     void Start()
     {
         SpawnInter = Random.Range(1, 3);
+        Points = 100;
     }
   
 
     // Update is called once per frame
     void Update()
     {
-       
-        
+
+        BossHealth.value = Points; 
             timer += Time.deltaTime;
-            PointCounter.text = "Points: " + Mathf.Round(Points).ToString();
+            PointCounter.text = "Boss Health " + Mathf.Round(Points).ToString();
         if(timer >= SpawnInter)
         {
             Vector3 TopspawnPos = new Vector3(18f, 3.6f, transform.position.z);
@@ -66,7 +69,7 @@ public class CoinSystem : MonoBehaviour
         if (collision.gameObject.CompareTag("Coin"))
         {
             Destroy(collision.gameObject);
-            Points++;
+            Points--;
         }
         
       
