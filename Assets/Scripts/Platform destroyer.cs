@@ -1,18 +1,25 @@
+using TMPro;
+using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Platformdestroyer : MonoBehaviour
 {
-    public CoinSystem Point;
+    private float PlayerHP;
+    public TMP_Text PlayerHealth;
+    public Slider PlayerHealthBar;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-       
+        PlayerHP = 10f;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        Point = FindFirstObjectByType<CoinSystem>();
+        PlayerHealth.text = "Player Health: " + Mathf.Round(PlayerHP).ToString();
+        PlayerHealthBar.value = PlayerHP;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -31,7 +38,7 @@ public class Platformdestroyer : MonoBehaviour
         if (collision.gameObject.CompareTag("Coin"))
         {
             Destroy(collision.gameObject);
-            Point.Points--;
+            PlayerHP--;
         }
     }
 }
