@@ -40,5 +40,9 @@ public class Platformdestroyer : MonoBehaviour
             Destroy(collision.gameObject);
             PlayerHP--;
         }
+        if(PlayerHP <= 0)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Lose");
+        }
     }
 }
